@@ -1,2 +1,21 @@
-# poc.core.net8
-poc.core.net8
+# Estrutura do Package
+- ASP.NET Core 8.0: Framework para desenvolvimento da Microsoft.
+- XUnit
+- MediatR
+
+## NuGet Package: poc.core.net8
+- Biblioteca central que fornece classes e métodos utilizados por todos os projetos.
+- Install-Package poc.core.api.net8 --version 1.0.0
+- https://www.nuget.org/packages/poc.core.api.net8
+
+## Youtube
+- ......
+
+## Autor
+
+- Guilherme Figueiras Maurila
+
+[![Linkedin Badge](https://img.shields.io/badge/-Guilherme_Figueiras_Maurila-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/guilherme-maurila)](https://www.linkedin.com/in/guilherme-maurila)
+[![Gmail Badge](https://img.shields.io/badge/-gfmaurila@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:gfmaurila@gmail.com)](mailto:gfmaurila@gmail.com)
+
+
