@@ -3,6 +3,9 @@
 - XUnit
 - MediatR
 
+![image](https://github.com/gfmaurila/poc.core.net8/assets/5544035/8edb040b-1a03-4529-9a15-a022e5413502)
+
+
 ## NuGet Package: poc.core.net8
 - Biblioteca central que fornece classes e métodos utilizados por todos os projetos.
 - Install-Package poc.core.api.net8 --version 1.0.0
