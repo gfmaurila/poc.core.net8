@@ -1,16 +1,24 @@
 using poc.core.api.net8.Abstractions;
 using poc.core.api.net8.Events;
+using System.Diagnostics.CodeAnalysis;
 
 namespace poc.core.api.net8;
 
 /// <summary>
 /// Classe base que contém os comportamentos de uma entidade.
 /// </summary>
+/// 
+[ExcludeFromCodeCoverage]
 public abstract class BaseEntity : IEntity<Guid>
 {
     private readonly List<Event> _domainEvents = new();
 
-    public Guid Id { get; private init; } = Guid.NewGuid();
+    public Guid Id { get; protected set; } = Guid.NewGuid();
+
+    public virtual void SetId(Guid id)
+    {
+        Id = id;
+    }
 
     /// <summary>
     /// Eventos de domínio que ocorreram.
@@ -32,6 +40,8 @@ public abstract class BaseEntity : IEntity<Guid>
 /// <summary>
 /// Classe base que contém os comportamentos de uma entidade.
 /// </summary>
+/// 
+[ExcludeFromCodeCoverage]
 public abstract class BaseEOraclentity
 {
     private readonly List<Event> _domainEvents = new();
