@@ -25,4 +25,10 @@ public class RedisConnection
     {
         return _redisConnection.GetDatabase(dbIndex);
     }
+
+    // Novo método para obter a instância ConnectionMultiplexer
+    public ConnectionMultiplexer GetConnectionMultiplexer()
+    {
+        return _redisConnection;
+    }
 }

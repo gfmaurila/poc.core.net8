@@ -9,5 +9,6 @@ public interface IRedisCacheService<T>
     Task<long> RemoveFromListAsync(string listKey, T value);
     Task<T> GetAsync(string key);
     Task<bool> DeleteAsync(string key);
+    Task ClearDatabaseAsync();
 }
 

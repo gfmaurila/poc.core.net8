@@ -11,12 +11,14 @@ public class RedisCacheService<T> : IRedisCacheService<T>
 {
     private readonly IDatabase _database;
     private readonly CacheOptions _cacheOptions;
+    private readonly IConnectionMultiplexer _connectionMultiplexer;
 
     public RedisCacheService(RedisConnection redisConnection, IOptions<CacheOptions> cacheOptions)
     {
         _cacheOptions = cacheOptions.Value;
+        _connectionMultiplexer = redisConnection.GetConnectionMultiplexer();
         // Aqui você passa o índice do banco de dados definido nas configurações para o método GetDatabase
-        _database = redisConnection.GetDatabase(_cacheOptions.DbIndex);
+        _database = _connectionMultiplexer.GetDatabase(_cacheOptions.DbIndex);
     }
 
     public async Task<bool> SetAsync(string key, T value, TimeSpan? expiry = null)
@@ -68,5 +70,12 @@ public class RedisCacheService<T> : IRedisCacheService<T>
     public async Task<bool> DeleteAsync(string key)
     {
         return await _database.KeyDeleteAsync(key);
+    }
+
+    public async Task ClearDatabaseAsync()
+    {
+        var endpoints = _connectionMultiplexer.GetEndPoints();
+        var server = _connectionMultiplexer.GetServer(endpoints.First());
+        await server.FlushDatabaseAsync(_database.Database);
     }
 }
